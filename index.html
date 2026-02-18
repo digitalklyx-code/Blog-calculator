@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Calculator Tool</title>
+</head>
+<body>
+    <h1>Blog Calculator Tool</h1>
+    <form id="calculator">
+        <label for="traffic-potential">Traffic Potential:</label>
+        <input type="number" id="traffic-potential" required>
+        <br>
+        <label for="conversion-factor">Conversion Factor:</label>
+        <input type="number" id="conversion-factor" required>
+        <br>
+        <label for="content-scale">Content Scale:</label>
+        <input type="number" id="content-scale" required>
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+    <div id="results">
+        <h2>Forecast Metrics:</h2>
+        <p id="traffic-forecast">Traffic Forecast: </p>
+        <p id="lead-forecast">Lead Forecast: </p>
+        <p id="revenue-forecast">Revenue Forecast: </p>
+    </div>
+    <script>
+        document.getElementById('calculator').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const trafficPotential = parseFloat(document.getElementById('traffic-potential').value);
+            const conversionFactor = parseFloat(document.getElementById('conversion-factor').value);
+            const contentScale = parseFloat(document.getElementById('content-scale').value);
+            const trafficForecast = trafficPotential * contentScale;
+            const leadForecast = trafficForecast * conversionFactor;
+            const revenueForecast = leadForecast * 100; // assuming $100 per lead
+            document.getElementById('traffic-forecast').textContent = `Traffic Forecast: ${trafficForecast}`;
+            document.getElementById('lead-forecast').textContent = `Lead Forecast: ${leadForecast}`;
+            document.getElementById('revenue-forecast').textContent = `Revenue Forecast: $${revenueForecast}`;
+        });
+    </script>
+</body>
+</html>
