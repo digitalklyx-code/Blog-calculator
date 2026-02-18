@@ -1,21 +1,54 @@
-// script.js
-
-// Function to calculate traffic forecasts
-function calculateTrafficForecast(currentTraffic, growthRate, months) {
-    return currentTraffic * Math.pow((1 + growthRate), months);
+function calculateProjections(monthlySearchVolume, targetKeywords, ctrPercentage, websiteConversionRate, leadFormResponseRate, avgDealValue, keywordDifficulty) {
+    // Calculate monthly visitors
+    const monthlyVisitors = monthlySearchVolume * targetKeywords * (ctrPercentage / 100);
+    // Calculate monthly leads
+    const monthlyLeads = monthlyVisitors * (websiteConversionRate / 100) * (leadFormResponseRate / 100);
+    // Calculate monthly revenue
+    const monthlyRevenue = monthlyLeads * avgDealValue;
+    // Calculate annual revenue
+    const annualRevenue = monthlyRevenue * 12;
+    // Calculate traffic growth
+    const growthFactor = (keywordDifficulty < 30) ? 1.2 : (keywordDifficulty < 70) ? 1.1 : 1.05;
+    const sixMonthTraffic = monthlyVisitors * growthFactor * 6;
+    const twelveMonthTraffic = monthlyVisitors * growthFactor * 12;
+    // Determine lead quality
+    let leadQuality;
+    if (monthlyVisitors > 1000 && keywordDifficulty < 50) {
+        leadQuality = 'High';
+    } else if (monthlyVisitors > 500) {
+        leadQuality = 'Medium';
+    } else {
+        leadQuality = 'Low';
+    }
+    // Calculate ROI multiplier
+    const estimatedInvestment = 10000; // Example estimate
+    const roiMultiplier = annualRevenue / estimatedInvestment;
+    // Display results
+    document.getElementById('monthlyVisitors').innerText = monthlyVisitors.toFixed(0);
+    document.getElementById('monthlyLeads').innerText = monthlyLeads.toFixed(0);
+    document.getElementById('monthlyRevenue').innerText = monthlyRevenue.toFixed(2);
+    document.getElementById('annualRevenue').innerText = annualRevenue.toFixed(2);
+    document.getElementById('sixMonthTraffic').innerText = sixMonthTraffic.toFixed(0);
+    document.getElementById('twelveMonthTraffic').innerText = twelveMonthTraffic.toFixed(0);
+    document.getElementById('leadQuality').innerText = leadQuality;
+    document.getElementById('roiMultiplier').innerText = roiMultiplier.toFixed(2);
 }
 
-// Function to calculate lead forecasts
-function calculateLeadForecast(currentLeads, conversionRate, months) {
-    return currentLeads * conversionRate * months;
+function resetForm() {
+    document.getElementById('monthlySearchVolume').value = '';
+    document.getElementById('targetKeywords').value = '';
+    document.getElementById('ctrPercentage').value = '';
+    document.getElementById('websiteConversionRate').value = '';
+    document.getElementById('leadFormResponseRate').value = '';
+    document.getElementById('avgDealValue').value = '';
+    document.getElementById('keywordDifficulty').value = '';
+    // Clear result elements
+    document.getElementById('monthlyVisitors').innerText = '';
+    document.getElementById('monthlyLeads').innerText = '';
+    document.getElementById('monthlyRevenue').innerText = '';
+    document.getElementById('annualRevenue').innerText = '';
+    document.getElementById('sixMonthTraffic').innerText = '';
+    document.getElementById('twelveMonthTraffic').innerText = '';
+    document.getElementById('leadQuality').innerText = '';
+    document.getElementById('roiMultiplier').innerText = '';
 }
-
-// Function to calculate revenue projections
-function calculateRevenueProjection(currentRevenue, growthRate, months) {
-    return currentRevenue * Math.pow((1 + growthRate), months);
-}
-
-// Example usage
-console.log('Traffic Forecast:', calculateTrafficForecast(1000, 0.1, 6));
-console.log('Lead Forecast:', calculateLeadForecast(500, 0.05, 6));
-console.log('Revenue Projection:', calculateRevenueProjection(10000, 0.1, 6));
