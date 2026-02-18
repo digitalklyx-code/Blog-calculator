@@ -4,31 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Calculator</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        h1 { color: #333; }
-        .container { max-width: 600px; margin: auto; }
-        label { display: block; margin: 10px 0 5px; }
-        input[type="number"] { width: 100%; padding: 8px; margin-bottom: 10px; }
-        input[type="submit"] { padding: 10px 15px; background-color: #28a745; color: white; border: none; cursor: pointer; }
-        input[type="submit"]:hover { background-color: #218838; }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Blog Calculator</h1>
-        <form>
-            <label for="traffic-potential">Traffic Potential</label>
-            <input type="number" id="traffic-potential" name="traffic-potential" placeholder="Enter traffic potential" required>
-            
-            <label for="conversion-factor">Conversion Factor</label>
-            <input type="number" id="conversion-factor" name="conversion-factor" placeholder="Enter conversion factor" required>
-            
-            <label for="content-scale">Content Scale Metrics</label>
-            <input type="number" id="content-scale" name="content-scale" placeholder="Enter content scale metrics" required>
-            
-            <input type="submit" value="Calculate">
-        </form>
+    <h1>Blog Calculator</h1>
+    <form id="calculator-form">
+        <fieldset>
+            <legend>Traffic Potential</legend>
+            <label for="monthlySearchVolume">Monthly Search Volume:</label>
+            <input type="number" id="monthlySearchVolume" name="monthlySearchVolume" required><br>
+            <label for="targetKeywords">Target Keywords:</label>
+            <input type="text" id="targetKeywords" name="targetKeywords" required><br>
+            <label for="rankingPosition">Ranking Position:</label>
+            <input type="number" id="rankingPosition" name="rankingPosition" required><br>
+            <label for="averageCTR">Average CTR (%):</label>
+            <input type="number" step="0.01" id="averageCTR" name="averageCTR" required><br>
+        </fieldset>
+        <fieldset>
+            <legend>Competition</legend>
+            <label for="keywordDifficulty">Keyword Difficulty:</label>
+            <select id="keywordDifficulty" name="keywordDifficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select><br>
+            <label for="timeToRank">Time to Rank (months):</label>
+            <input type="number" id="timeToRank" name="timeToRank" required><br>
+        </fieldset>
+        <fieldset>
+            <legend>Conversion Factors</legend>
+            <label for="websiteConversionRate">Website Conversion Rate (%):</label>
+            <input type="number" step="0.01" id="websiteConversionRate" name="websiteConversionRate" required><br>
+            <label for="leadFormResponseRate">Lead Form Response Rate (%):</label>
+            <input type="number" step="0.01" id="leadFormResponseRate" name="leadFormResponseRate" required><br>
+            <label for="avgDealValue">Average Deal Value:</label>
+            <input type="number" id="avgDealValue" name="avgDealValue" required><br>
+        </fieldset>
+        <fieldset>
+            <legend>Content Scale</legend>
+            <label for="blogsPerMonth">Blogs per Month:</label>
+            <input type="number" id="blogsPerMonth" name="blogsPerMonth" required><br>
+            <label for="numberOfMonths">Number of Months:</label>
+            <input type="number" id="numberOfMonths" name="numberOfMonths" required><br>
+        </fieldset>
+        <button type="button" id="calculate">Calculate</button>
+    </form>
+    <div id="results">
+        <h2>Results</h2>
+        <p>Monthly Visitors: <span id="monthlyVisitors">0</span></p>
+        <p>6 Month Traffic: <span id="sixMonthTraffic">0</span></p>
+        <p>12 Month Traffic: <span id="twelveMonthTraffic">0</span></p>
+        <p>Monthly Leads: <span id="monthlyLeads">0</span></p>
+        <p>Lead Quality: <span id="leadQuality">0</span></p>
+        <p>6 Month Leads: <span id="sixMonthLeads">0</span></p>
+        <p>Monthly Revenue: <span id="monthlyRevenue">0</span></p>
+        <p>Annual Revenue: <span id="annualRevenue">0</span></p>
+        <p>ROI Multiplier: <span id="roiMultiplier">0</span></p>
     </div>
 </body>
 </html>
