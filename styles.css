@@ -1,43 +1,81 @@
-.header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-  text-align: center;
-}
-
 .container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.button {
-  background-color: #61dafb;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
+.form-section {
+    border-left: 4px solid #4CAF50;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f0f0, #d9d9d9);
 }
 
-.button:hover {
-  background-color: #21a1f1;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.result {
-  font-size: 1.5em;
-  margin-top: 20px;
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.btn-calculate {
+    background: linear-gradient(to right, #4CAF50, #66BB6A);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-calculate:hover {
+    background: linear-gradient(to right, #66BB6A, #4CAF50);
+}
+
+.results-section {
+    margin-top: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.result-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.metrics {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .btn-calculate {
+        width: 100%;
+    }
 }
