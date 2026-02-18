@@ -3,41 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Calculator Tool</title>
+    <title>Blog Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #333; }
+        .container { max-width: 600px; margin: auto; }
+        label { display: block; margin: 10px 0 5px; }
+        input[type="number"] { width: 100%; padding: 8px; margin-bottom: 10px; }
+        input[type="submit"] { padding: 10px 15px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #218838; }
+    </style>
 </head>
 <body>
-    <h1>Blog Calculator Tool</h1>
-    <form id="calculator">
-        <label for="traffic-potential">Traffic Potential:</label>
-        <input type="number" id="traffic-potential" required>
-        <br>
-        <label for="conversion-factor">Conversion Factor:</label>
-        <input type="number" id="conversion-factor" required>
-        <br>
-        <label for="content-scale">Content Scale:</label>
-        <input type="number" id="content-scale" required>
-        <br>
-        <button type="submit">Calculate</button>
-    </form>
-    <div id="results">
-        <h2>Forecast Metrics:</h2>
-        <p id="traffic-forecast">Traffic Forecast: </p>
-        <p id="lead-forecast">Lead Forecast: </p>
-        <p id="revenue-forecast">Revenue Forecast: </p>
+    <div class="container">
+        <h1>Blog Calculator</h1>
+        <form>
+            <label for="traffic-potential">Traffic Potential</label>
+            <input type="number" id="traffic-potential" name="traffic-potential" placeholder="Enter traffic potential" required>
+            
+            <label for="conversion-factor">Conversion Factor</label>
+            <input type="number" id="conversion-factor" name="conversion-factor" placeholder="Enter conversion factor" required>
+            
+            <label for="content-scale">Content Scale Metrics</label>
+            <input type="number" id="content-scale" name="content-scale" placeholder="Enter content scale metrics" required>
+            
+            <input type="submit" value="Calculate">
+        </form>
     </div>
-    <script>
-        document.getElementById('calculator').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const trafficPotential = parseFloat(document.getElementById('traffic-potential').value);
-            const conversionFactor = parseFloat(document.getElementById('conversion-factor').value);
-            const contentScale = parseFloat(document.getElementById('content-scale').value);
-            const trafficForecast = trafficPotential * contentScale;
-            const leadForecast = trafficForecast * conversionFactor;
-            const revenueForecast = leadForecast * 100; // assuming $100 per lead
-            document.getElementById('traffic-forecast').textContent = `Traffic Forecast: ${trafficForecast}`;
-            document.getElementById('lead-forecast').textContent = `Lead Forecast: ${leadForecast}`;
-            document.getElementById('revenue-forecast').textContent = `Revenue Forecast: $${revenueForecast}`;
-        });
-    </script>
 </body>
 </html>
